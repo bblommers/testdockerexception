@@ -5,15 +5,14 @@ on: push
 jobs:
   test_macos_dev96:
     name: Test exception on MacOS for dev96
-    runs-on: [macos-latest, ubuntu-latest]
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Verify Docker
-        run: |
-            docker info
 
       - name: Install dependencies
         run: |
@@ -28,15 +27,14 @@ jobs:
 
   test_macos_dev110:
     name: Test exception on MacOS for dev110
-    runs-on: [macos-latest, ubuntu-latest]
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Verify Docker
-        run: |
-            docker info
 
       - name: Install dependencies
         run: |
@@ -52,6 +50,9 @@ jobs:
   test_linux_dev96:
     name: Test exception on Linux for dev96
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
 
     steps:
       - name: Checkout code
@@ -75,6 +76,9 @@ jobs:
   test_linux_dev110:
     name: Test exception on Linux for dev110
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
 
     steps:
       - name: Checkout code
