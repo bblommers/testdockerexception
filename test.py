@@ -72,6 +72,9 @@ def test_invoke():
     }
 
     response = CLIENT_LAMBDA.invoke(**_kwargs, Qualifier="$LATEST")
+    response_body = response["Payload"].read()
+    print("Response Body:")
+    print(response_body)
 
    
-    assert json.loads(response["Payload"].read()) == payload["param"]
+    assert json.loads(response_body) == payload["param"]
